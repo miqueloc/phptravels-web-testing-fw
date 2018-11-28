@@ -56,11 +56,11 @@ robot --variable BROWSER:chrome --outputdir output tests/success_reservation.rob
 
 **DOCKER CONTAINER:**
 ```
-docker run --net host --rm -v path_to_phptravels-web-testing-fw_repo_directory:/home/robot/ --shm-size=256m -i --name docker_container_name docker_image_name:latest ./execute_tests.sh chrome test_suite_name.robot
+docker run --net host --rm -v path_to_phptravels-web-testing-fw_repo_directory:/home/project/ --shm-size=256m -i --name docker_container_name docker_image_name:latest ./execute_tests.sh chrome test_suite_name.robot
 ```
 Example:
 ```
-docker run --net host --rm -v /home/user/Desktop/phptravels-web-testing-fw/:/home/robot/ --shm-size=256m -i --name phptravels-testing docker-web-tests:latest ./execute_tests.sh chrome success_reservation.robot
+docker run --net host --rm -v /home/user/Desktop/phptravels-web-testing-fw/:/home/project/ --shm-size=256m -i --name phptravels-testing docker-web-tests:latest ./execute_tests.sh chrome success_reservation.robot
 ```
 ### HOW TO CHECK THE REPORT
 You can check the HTML report in output/ directory
@@ -103,6 +103,7 @@ You can write in *Guest* global variables or directly in the test case definitio
 - Webpage is changing constantly. Flights section can be missing or is possible that some element searching by xpath could not be found
 - Driver, Selenium and Browser version incompatibility
 - Cities/Airports and Country to select is possible that there are not in the webpage
+- Running with Firefox, some elements on webpage are not working properly
 
 #BUGS FOUND
 - Departure and Return date in flight list and invoice page are not correct. Always are the current date or tomorrow 
