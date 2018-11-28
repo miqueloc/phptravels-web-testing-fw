@@ -100,7 +100,8 @@ Element Text Value Should Be Equal
    ${value} =  Convert To Uppercase  ${value}
    ${text} =  Get Text Value  ${locator}
    ${text} =  Convert To Uppercase  ${text}
-   Should Be Equal  ${text}  ${value}
+   ${text} =  Strip String  ${text}  mode=both
+   Should Be Equal As Strings  ${text}  ${value}
 
 Scroll Down To
    [Arguments]  ${i}

@@ -16,4 +16,4 @@ export PYTHONPATH=/usr/lib/python2.x/site-packages
 export PYTHONHOME=/usr
 export PYTHONIOENCODING=utf-8
 
-robot -d robot/output -x xunit -v BROWSER:$1 project/tests/$2
+robot -d project/output -x xunit -v BROWSER:$1 project/tests/$2

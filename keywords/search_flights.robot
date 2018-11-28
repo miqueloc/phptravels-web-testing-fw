@@ -2,11 +2,13 @@
 Documentation     Search flights keywords
 Resource          commons/basic_actions.robot
 Resource          ../resources/locators/search_flights.robot
+Library           FakerLibrary
 
 *** Keywords ***
 Fill From City Or Airport Field
   [Arguments]  ${from}
   Click On Element  ${loc_search_flights_from_field_element}
+
   Fill Text Input  ${loc_search_flights_from_field}  ${from}
 
 Select From City Or Airport On Result List
@@ -111,30 +113,49 @@ Select Book As A Guest Tab
 
 Fill Guest Name Field
   [Arguments]  ${name}
+  ${name} =  Run Keyword If  '${name}'=='_random'  First Name
+  ...  ELSE  Set Variable  ${name}
+  Set Global Variable  ${GUEST_NAME}  ${name}
   Fill Text Input  ${loc_personal_details_guest_first_name}  ${name}
 
 Fill Guest Last Name Field
   [Arguments]  ${last_name}
+  ${last_name} =  Run Keyword If  '${last_name}'=='_random'  Last Name
+  ...  ELSE  Set Variable  ${last_name}
+  Set Global Variable  ${GUEST_LAST_NAME}  ${last_name}
   Fill Text Input  ${loc_personal_details_guest_last_name}  ${last_name}
 
 Fill Guest Email Field
   [Arguments]  ${email}
+  ${email} =  Run Keyword If  '${email}'=='_random'  Email
+  ...  ELSE  Set Variable  ${email}
+  Set Global Variable  ${GUEST_EMAIL}  ${email}
+  Set Global Variable  ${EMAIL_TO_CONFIRM}  ${email}
   Fill Text Input  ${loc_personal_details_guest_email}  ${email}
 
-Fill Guest Email Confirmation Field
-  [Arguments]  ${email}
-  Fill Text Input  ${loc_personal_details_guest_confirm_email}  ${email}
+Fill Guest Email Confirmation Field With The Same Value
+  Fill Text Input  ${loc_personal_details_guest_confirm_email}  ${EMAIL_TO_CONFIRM}
 
 Fill Guest Contact Number Field
   [Arguments]  ${contact_number}
+  ${contact_number} =  Run Keyword If  '${contact_number}'=='_random'  Random Number  digits=8
+  ...  ELSE  Set Variable  ${contact_number}
+  ${contact_number} =  Convert To String  ${contact_number}
+  Set Global Variable  ${GUEST_CONTACT_NUMBER}  ${contact_number}
   Fill Text Input  ${loc_personal_details_guest_phone}  ${contact_number}
 
 Fill Guest Address Field
   [Arguments]  ${address}
+  ${address} =  Run Keyword If  '${address}'=='_random'  Sentence  nb_words=3
+  ...  ELSE  Set Variable  ${address}
+  Set Global Variable  ${GUEST_ADDRESS}  ${address}
   Fill Text Input  ${loc_personal_details_guest_address}  ${address}
 
 Select Guest Country
   [Arguments]  ${country}
+  ${country} =  Run Keyword If  '${country}'=='_random'  Country
+  ...  ELSE  Set Variable  ${country}
+  Set Global Variable  ${GUEST_COUNTRY}  ${country}
   Click On Element  ${loc_personal_details_guest_country_field}
   @{countries} =  Get Elements  ${loc_personal_details_guest_country_items}
   Click On Element List By Text  ${countries}  ${country}

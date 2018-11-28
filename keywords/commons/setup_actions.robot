@@ -15,3 +15,5 @@ Open Browser Window
 Set Selenium Configuration
     [Arguments]  ${delay_selenium}
     Set Selenium Speed  ${delay_selenium} seconds
+    Set Environment Variable  webdriver.gecko.driver  /usr/local/bin/geckodriver
+    Set Environment Variable  webdriver.chrome.driver  /usr/local/bin/chromedriver

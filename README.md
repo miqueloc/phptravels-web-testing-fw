@@ -44,26 +44,68 @@ Example:
 sudo docker build -t docker-web-tests .
 ```
 
-### HOW TO RUN THE TEST CASES?
+### HOW TO RUN THE TEST CASES
 
 **YOUR OWN ENVIRONMENT:**
 
 - Go to project root directory phptravels-web-testing-fw/
 - Run:
 ```
-robot --variable BROWSER:[chrome|firefox] --outputdir output tests/success_reservation.robot
-```
-Example:
-```
 robot --variable BROWSER:chrome --outputdir output tests/success_reservation.robot
 ```
+
 **DOCKER CONTAINER:**
 ```
-sudo docker run --net host --rm -v path_to_phptravels-web-testing-fw_repo_directory:/home/robot/ --shm-size=256m -i --name robot docker_image_name:latest ./execute_tests.sh [chrome|firefox] test_suite_name.robot
+docker run --net host --rm -v path_to_phptravels-web-testing-fw_repo_directory:/home/robot/ --shm-size=256m -i --name docker_container_name docker_image_name:latest ./execute_tests.sh chrome test_suite_name.robot
 ```
 Example:
 ```
-sudo docker run --net host --rm -v /home/user/Desktop/phptravels-web-testing-fw/:/home/robot/ --shm-size=256m -i --name robot docker-web-tests:latest ./execute_tests.sh chrome success_reservation.robot
+docker run --net host --rm -v /home/user/Desktop/phptravels-web-testing-fw/:/home/robot/ --shm-size=256m -i --name phptravels-testing docker-web-tests:latest ./execute_tests.sh chrome success_reservation.robot
 ```
-### HOW TO CHECK THE REPORT?
+### HOW TO CHECK THE REPORT
 You can check the HTML report in output/ directory
+
+### HOW TO ADD MORE TEST CASES WHITIN THE SUITE FILE (success_reservation.robot)
+This suite file has a test case to validate a successful reservation 
+
+1. Open the suite file tests/success_reservation.robot
+2. Add more test cases in section '*** Test Cases ***' 
+2.1. Add a test name 
+2.2. Add argument values to be used in the test case
+
+Test Arguments to be defined are:
+- ${from} : Airport or City Name. You can use Acronym too. There are two constants in the project (${BCN_CITY} and ${LCY_CITY}) if you want use it
+- ${to} : Airport or City Name. You can use Acronym too
+- ${departure_date} : [Important] You need to set as value the number of days to add to the current date. Example: if the value is 20; the test will calculate the date with the expression: current_date + 20 days
+- ${return_date} : [Important] You need to set as value the number of days to add to the current date. Example: if the value is 20; the test will calculate the date with the expression: current_date + 20 days
+- ${travel_class} : You need to use one of these constants (${ECONOMY_TRAVEL_CLASS}, ${FIRST_TRAVEL_CLASS} or ${BUSINESS_TRAVEL_CLASS}) 
+- ${adults} : Number of adults for the reservation
+- ${children} : Number of children for the reservation
+- ${infants} : Number of infants for the reservation
+- ${name} : The name of the person making the reservation
+- ${lastname} : The last name of the person making the reservation
+- ${email} : The email of the person making the reservation
+- ${contact_number} : The phone number of the person making the reservation
+- ${address} : The address of the person making the reservation
+- ${country} : The country of the person making the reservation. Example: Venezuela
+
+(!) Important!! -> Variables will be defined in the same order as previous list
+
+You can use global variables or text plain in suite test case file.
+
+Global varibales are defined in resources/global_variables.robot
+
+**Do you want use random values for personal data: name, lastname, address and others? ?**
+You can write in *Guest* global variables or directly in the test case definition the key: _random and these variables/arguments will has a random valid value (using robotframework-faker library)
+
+ 
+### POSIBLE PROBLEMS
+- Webpage is changing constantly. Flights section can be missing or is possible that some element searching by xpath could not be found
+- Driver, Selenium and Browser version incompatibility
+- Cities/Airports and Country to select is possible that there are not in the webpage
+
+#BUGS FOUND
+- Departure and Return date in flight list and invoice page are not correct. Always are the current date or tomorrow 
+- Guest Contact Number and other guest values are cutted in Invoice page where exceeds a limit
+
+Enjoy it!!

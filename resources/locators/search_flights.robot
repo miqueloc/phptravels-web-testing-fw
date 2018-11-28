@@ -53,6 +53,6 @@ ${loc_booking_summary_confirm_button}                xpath=//button[@name='guest
 # Invoice Page
 ${loc_invoice_pay_on_arrival}                        xpath=//button[contains(@class, 'arrivalpay')]
 ${loc_invoice_reserved_message}                      xpath=//table[@id='invoiceTable']/tbody/tr[1]/td/div/b
-${loc_invoice_client_full_name}                           xpath=//table[@id='invoiceTable']/tbody/tr[2]/td/div[2]//div[2]
-${loc_invoice_client_address}                        xpath=//table[@id='invoiceTable']/tbody/tr[2]/td/div[2]//div[4]
-${loc_invoice_client_phone}                          xpath=//table[@id='invoiceTable']/tbody/tr[2]/td/div[2]//div[3]
+${loc_invoice_client_full_name}                      xpath=//table[@id='invoiceTable']/tbody/tr[2]/td/div[2]//div[2]
+${loc_invoice_client_address}                        xpath=//table[@id='invoiceTable']/tbody/tr[2]/td/div[2]//div[3]
+${loc_invoice_client_phone}                          xpath=//table[@id='invoiceTable']/tbody/tr[2]/td/div[2]//div[4]

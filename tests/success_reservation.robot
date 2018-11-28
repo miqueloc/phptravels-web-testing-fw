@@ -9,7 +9,7 @@ Resource          ../keywords/search_flights.robot
 Test Template     Validate A Successful Reservation As A Guest
 
 *** Test Cases ***
-Validate A Flight Reservation Selecting Economy Class  ${BCN_CITY}  ${LCY_CITY}  ${DEPARTURE_DATE}  ${RETURN_DATE}  ${ECONOMY_TRAVEL_CLASS}  ${ADULTS}  ${CHILDREN}  ${INFANTS}  ${GUEST_NAME}  ${GUEST_LAST_NAME}  ${GUEST_EMAIL}  ${GUEST_CONTACT_NUMBER}  ${GUEST_ADDRESS}  ${GUEST_COUNTRY}
+Validate An Economy Round Trip Reservation For 1 Adult, 1 Child and 1 Infant  ${BCN_CITY}  ${LCY_CITY}  ${DEPARTURE_DATE}  ${RETURN_DATE}  ${ECONOMY_TRAVEL_CLASS}  ${ADULTS}  ${CHILDREN}  ${INFANTS}  ${GUEST_NAME}  ${GUEST_LAST_NAME}  ${GUEST_EMAIL}  ${GUEST_CONTACT_NUMBER}  ${GUEST_ADDRESS}  ${GUEST_COUNTRY}
 
 *** Keywords ***
 Validate A Successful Reservation As A Guest
@@ -37,14 +37,14 @@ Validate A Successful Reservation As A Guest
   Fill Guest Name Field                 ${name}
   Fill Guest Last Name Field            ${last_name}
   Fill Guest Email Field                ${email}
-  Fill Guest Email Confirmation Field   ${email}
+  Fill Guest Email Confirmation Field With The Same Value
   Fill Guest Contact Number Field       ${contact_number}
   Fill Guest Address Field              ${address}
   Select Guest Country                  ${guest_country}
   Click On Confirm Booking Button
-  Validate Client Full Name On Invoice            ${name}${SPACE}${last_name}
-  Validate Client Contact Number On Invoice  ${contact_number}
-  Validate Client Address On Invoice         ${address}
+  Validate Client Full Name On Invoice            ${GUEST_NAME}${SPACE}${GUEST_LAST_NAME}
+  Validate Client Contact Number On Invoice  ${GUEST_CONTACT_NUMBER}
+  Validate Client Address On Invoice         ${GUEST_ADDRESS}
   Click On Pay On Arrival Button
   Confirm Pay On Arrival
   Validate Booking Status Message As Reserved
