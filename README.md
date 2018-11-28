@@ -119,3 +119,6 @@ You can write in *Guest* global variables or directly in the test case definitio
 - Guest Contact Number and other guest values are cutted in Invoice page where exceeds a limit
 
 Enjoy it!!
+
+
+Try to un with travis-ci
