@@ -45,6 +45,7 @@ sudo docker build -t docker-web-tests .
 ```
 
 **3. TRAVIS**
+
 You need this proyect as repository in your Travis CI
 
 ### HOW TO RUN THE TEST CASES
@@ -67,6 +68,7 @@ docker run --net host --rm -v /home/user/Desktop/phptravels-web-testing-fw/:/hom
 ```
 
 **TRAVIS CI**
+
 You can use the file .travis.yml to run the test in your Travis CI
  
 ### HOW TO CHECK THE REPORT
