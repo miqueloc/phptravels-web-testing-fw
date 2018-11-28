@@ -1,0 +1,8 @@
+language: ruby
+
+services:
+  - docker
+
+before_install:
+  - docker build -t docker-web-tests docker/.
+  - docker run --net host --rm -v .:/home/project/ --shm-size=256m -i --name phptravels-testing docker-web-tests:latest ./execute_tests.sh chrome success_reservation.robot
