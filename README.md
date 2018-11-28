@@ -121,4 +121,4 @@ You can write in *Guest* global variables or directly in the test case definitio
 Enjoy it!!
 
 
-Try to un with travis-ci
+Try to un with travis-ci with github commit
