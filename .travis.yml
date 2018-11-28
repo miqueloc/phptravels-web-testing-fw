@@ -5,4 +5,4 @@ services:
 
 before_install:
   - docker build -t docker-web-tests docker/.
-  - docker run -d -p 127.0.0.1:80:4567 -rm -v .:/home/project/ --shm-size=256m -i --name phptravels-testing docker-web-tests:latest ./execute_tests.sh chrome success_reservation.robot
+  - docker run -d -p 127.0.0.1:80:4567 -v .:/home/project/ --shm-size=256m -i --name phptravels-testing docker-web-tests:latest ./execute_tests.sh chrome success_reservation.robot
