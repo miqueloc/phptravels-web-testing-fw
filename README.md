@@ -4,7 +4,7 @@ This is a Project based in Robot Framework and Selenium2Library in order to crea
 
 ### WHERE CAN I RUN THE TEST CASES?
 
-You have two options to run the test cases:
+You have three options to run the test cases:
 
 **1. IN YOUR OWN ENVIRONMENT:**
 
@@ -44,6 +44,9 @@ Example:
 sudo docker build -t docker-web-tests .
 ```
 
+**3. TRAVIS**
+You need this proyect as repository in your Travis CI
+
 ### HOW TO RUN THE TEST CASES
 
 **YOUR OWN ENVIRONMENT:**
@@ -62,6 +65,10 @@ Example:
 ```
 docker run --net host --rm -v /home/user/Desktop/phptravels-web-testing-fw/:/home/project/ --shm-size=256m -i --name phptravels-testing docker-web-tests:latest ./execute_tests.sh chrome success_reservation.robot
 ```
+
+**TRAVIS CI**
+You can use the file .travis.yml to run the test in your Travis CI
+ 
 ### HOW TO CHECK THE REPORT
 You can check the HTML report in output/ directory
 
