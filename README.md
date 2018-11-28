@@ -46,7 +46,7 @@ sudo docker build -t docker-web-tests .
 
 **3. TRAVIS**
 
-You need this proyect as repository in your Travis CI
+You need this project as repository in your Travis CI
 
 ### HOW TO RUN THE TEST CASES
 
@@ -72,7 +72,7 @@ docker run --net host --rm -v /home/user/Desktop/phptravels-web-testing-fw/:/hom
 You can use the file .travis.yml to run the test in your Travis CI
  
 ### HOW TO CHECK THE REPORT
-You can check the HTML report in output/ directory
+You can check the HTML report in output/ directory (with steps, varibles and screenshots [in case to failure])
 
 ### HOW TO ADD MORE TEST CASES WHITIN THE SUITE FILE (success_reservation.robot)
 This suite file has a test case to validate a successful reservation 
